@@ -1,7 +1,7 @@
 function Box() {
     
-    this.width = 25;        //in px
-    this.height= 50;
+    this.width = 40;        //in px
+    this.height= 40;
     
 	
     var maxWidth = 900-this.width;
@@ -26,19 +26,19 @@ function Box() {
     this.dirX=0;
     this.dirY=0;
     
-    this.changePos = function(left, top){
+    this.setPos = function(left, top){
         this.x = left;
         this.y = top;
         this.element.style['left'] = this.x;
         this.element.style['top'] = maxHeight - this.y;
     }
     
-    this.changeDir = function(dirX, dirY){
+    this.setDir = function(dirX, dirY){
         this.dirX = dirX;
         this.dirY = dirY;
     }
     
-    this.changeSpeed = function(speed){
+    this.setSpeed = function(speed){
         this.speed = speed;
     }
  
@@ -56,15 +56,11 @@ function Box() {
 	}
     
     this.move = function(){
-//        console.log('dirX:',this.dirX,' dirY',this.dirY);
         var style = window.getComputedStyle(this.element);
-//        var x = parseInt(style.getPropertyValue("left"))+this.dirX*this.speed;
-//        var y = parseInt(style.getPropertyValue("top"))+this.dirY*this.speed;
         
         this.x += this.dirX*this.speed;
         this.y += this.dirY*this.speed;
         
-//        console.log('x:',x,' y:',y);
         this.element.style['left'] = this.x+'px';
         this.element.style['top'] = maxHeight- this.y+'px';
         
@@ -105,19 +101,19 @@ function Box() {
             }
             
             //checks collision from bottom side
-            if((y+height)>=y1 && y<y1 && (x+width)>=x1 && x<(x1+width1)){
+            else if((y+height)>=y1 && y<y1 && (x+width)>=x1 && x<(x1+width1)){
 //                console.log('2');
                 return 2;
             }
             
             //checks collision from top side
-            if((y1+height1)>=y && y1<y && (x+width)>=x1 && x<(x1+width1)){
+            else if((y1+height1)>=y && y1<y && (x+width)>=x1 && x<(x1+width1)){
 //                console.log('3');
                 return 3;
             }
                
             //checks collision from left side   
-            if((x1+width1)>=x && x>x1 && y<(y1 + height1) && (height + y)>y1){
+            else if((x1+width1)>=x && x>x1 && y<(y1 + height1) && (height + y)>y1){
 //                console.log('4');
                 return 4;
             }

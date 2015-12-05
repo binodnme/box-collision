@@ -1,11 +1,19 @@
 <html>
 	<head>
-		<title></title>
+		<title>boxes</title>
 		<link href="css/boxes.css" rel="stylesheet" />
 	</head>
 	
 	<body>
-        <div class="main-wrapper"></div>
+        <div class="main-wrapper">
+        
+        </div>
+        
+        <div class="input-wrapper">
+            <label>Angle: </label> <input id="angle" type="number" min="0" max="90" value="45">
+            <label>Speed: </label> <input id="speed" type="number" min="0" max="10" value="0">
+            <button onclick="setCondition()" >submit</button>
+        </div>
 		<script src="js/Animator.js"></script>
 		<script src="js/Box.js"></script>
 		<script src="js/BoxAnimation.js"></script>
