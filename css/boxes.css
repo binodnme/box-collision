@@ -10,8 +10,10 @@
 }
 
 .box {
+/*
 	width: 25px;
 	height: 25px;
+*/
 	border: 1px solid blue;
 	background-color: red;
 	position: absolute;

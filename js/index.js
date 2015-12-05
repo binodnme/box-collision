@@ -1,7 +1,7 @@
 
 var mainWrapper = document.getElementsByClassName("main-wrapper")[0];
 
-var num = 5;
+var num = 8;
 boxes = [];
 for(var i=0; i<num; i++){
     var box = new Box();
@@ -11,6 +11,49 @@ for(var i=0; i<num; i++){
     boxes.push(box);
 
 }
+
+var angle = 20;
+var speed = 3;
+//angle = angle % 360;
+
+//var quadrant = Math.ceil(angle/90);
+//angle = angle % 90;
+
+//console.log('quadrant: ',quadrant, 'angle: ',angle);
+var dx;
+var dy;
+if(angle==90){
+    dx=0;
+    dy=1;
+}else{
+    var value = Math.tan(angle*Math.PI/180);    
+    dx=1;
+    dy = value;
+}
+
+console.log('dx: ',dx,' dy:',dy);
+
+
+var box = new Box();
+box.addClass("box");
+box.element.innerHTML = "00"
+//console.log(box);
+box.changeDir(dx, dy);
+box.changePos(0, 0);
+box.changeSpeed(speed);
+box.appendTo(mainWrapper);
+boxes.push(box);
+
+
+//var box = new Box();
+//box.addClass("box");
+//box.element.innerHTML = "01"
+//console.log(box);
+//box.changeDir(0, 0);
+//box.changePos(0, 0);
+//box.appendTo(mainWrapper);
+//
+//boxes.push(box);
 
 setInterval(function(){
     for(var box in boxes){
