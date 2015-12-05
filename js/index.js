@@ -1,7 +1,7 @@
 
 var mainWrapper = document.getElementsByClassName("main-wrapper")[0];
 
-var num = 20;
+var num = 5;
 boxes = [];
 for(var i=0; i<num; i++){
     var box = new Box();
