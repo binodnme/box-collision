@@ -1,5 +1,3 @@
-//var angle = 45;
-//var speed = 0;
 
 var mainWrapper = document.getElementsByClassName("main-wrapper")[0];
 
@@ -36,11 +34,8 @@ mainWrapper.onmousemove = function(e){
     document.getElementById('angle').value = angle;
 }
 
-mainWrapper.onmouseout = function(){
-    
-}
 
-var num = 8;
+var num = 15;
 boxes = [];
 for(var i=0; i<num; i++){
     var box = new Box();
@@ -54,6 +49,7 @@ for(var i=0; i<num; i++){
 var box = new Box();
 box.addClass("box");
 box.element.innerHTML = "00"
+box.element.style['background'] = '#277D32'
 //console.log(box);
 //box.setDir(dx, dy);
 box.setPos(0, 0);
@@ -72,18 +68,22 @@ setInterval(function(){
                     //right
                     boxes[box].dirX=-1;
                     boxes[b].dirX=1;
+                    boxes[b].speed = boxes[box].speed;
                 }else if(a==2){
                     //top
                     boxes[box].dirY=-1;
                     boxes[b].dirY=1;
+                    boxes[b].speed = boxes[box].speed;
                 }else if(a==3){
                     //bottom
                     boxes[box].dirY=1;
                     boxes[b].dirY=-1;
+                    boxes[b].speed = boxes[box].speed;
                 }else if(a==4){
                     //left
                     boxes[box].dirX=1;
                     boxes[b].dirX=-1;
+                    boxes[b].speed = boxes[box].speed;
                 }
             }
         }
@@ -100,9 +100,16 @@ function setBox(angle, speed){
         dx=0;
         dy=1;
     }else{
-        var value = Math.tan(angle*Math.PI/180);    
-        dx=1;
-        dy = value;
+        if(angle<=45){
+            var value = Math.tan(angle*Math.PI/180);    
+            dx=1;
+            dy = value;    
+        }else{
+            var value = Math.tan((90-angle)*Math.PI/180);    
+            dx=value;
+            dy = 1;
+        }
+        
     }
     
     box.setDir(dx,dy);

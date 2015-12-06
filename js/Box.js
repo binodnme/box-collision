@@ -1,7 +1,7 @@
 function Box() {
     
-    this.width = 40;        //in px
-    this.height= 40;
+    this.width = 25;        //in px
+    this.height= 25;
     
 	
     var maxWidth = 900-this.width;
